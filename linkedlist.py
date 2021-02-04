@@ -69,6 +69,26 @@ class LinkedList:
             pointer.next = node
         self._size += 1
 
+    def remove(self, elem):
+        if self.head is None:
+            raise ValueError("{} is not in  list".format(elem))
+        elif self.head.data == elem:
+            self.head = self.head.next
+            return True
+        else:
+            ancestor = self.head
+            pointer = self.head.next
+            while pointer:
+                if pointer.data == elem:
+                    ancestor.next = pointer.next
+                    pointer.next = None
+                ancestor = pointer
+                pointer = pointer.next
+            return True
+        raise ValueError("{} is not in  list".format(elem))
+
+
+
 
 if __name__ == '__main__':
 
